@@ -1,0 +1,13 @@
+body{
+  background: peachpuff;
+  font-family: sans-serif;
+  margin: 3rem;
+}
+h3{
+  margin-top: 40px;
+}
+ul {
+  list-style-type: none;
+  padding: 1rem;
+  margin: 2rem;
+}

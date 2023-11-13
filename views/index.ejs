@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Habit Counter</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Habit Counter</h1>
+
+  <h3>Habits</h3>
+  <p>Track your habits for the month and see what you do the most of! Add or delete habits to customize your habit tracking.</p>
+  <ul class="habits">
+  <% for (let i=0; i < info.length; i++) {%>
+    <li class="habits">
+      <span>
+        <%= info[i].habit %>
+      </span>
+      <span>
+        <%= info[i].done %>
+      </span>
+      <span>
+        <button class="fa-thumbs-up">Done</button>
+      </span>
+      <span>
+        <button class="fa fa-trash" aria-hidden="true"></button>
+      </span>
+    </li>
+  <% } %>
+  </ul>
+
+  <h2>Add a personal habit!</h2>
+
+  <form action="/habit" method="POST">
+    <input type="text" placeholder="Habit" name="habit">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
