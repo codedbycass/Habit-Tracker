@@ -1,4 +1,4 @@
-var done = document.getElementsByClassName("fa-thumbs-up");
+var done = document.getElementsByClassName("check");
 var trash = document.getElementsByClassName("fa-trash");
 
 Array.from(done).forEach(function(element) {
@@ -11,7 +11,8 @@ Array.from(done).forEach(function(element) {
           body: JSON.stringify({
             'habit': habit,
             'done': done
-          })
+            //if span == invalid date vs invalid date hide
+            })
         })
         .then(response => {
           if (response.ok) return response.json()
@@ -39,3 +40,4 @@ Array.from(trash).forEach(function (element) {
     })
   });
 });
+

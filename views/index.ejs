@@ -8,35 +8,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Habit Counter</h1>
-
-  <h3>Habits</h3>
-  <p>Track your habits for the month and see what you do the most of! Add or delete habits to customize your habit tracking.</p>
-  <ul class="habits">
+  <h1>Simple Habit Counter</h1>
+  <h2>Keep a tally of your habits for the month! Use the prefilled hobbies, or customize your experience with the form.</h2>
+  <p>Your most <span class="blue">recent</span> hobby will appear at the <span class="blue">top</span> of the list, while the hobbies that you haven't done in a while we be at the bottom.</p>
+  <div class="input">
+  <h2>Add a personal habit!</h2>
+  <form action="/habit" method="POST">
+    <input type="text" placeholder="Habit" name="habit">
+    <!-- <input type="date" placeholder="Habit" name="previousDate" required> -->
+    <button type="submit">Submit</button>
+  </form>
+  </div>
+  <ul class="habit">
   <% for (let i=0; i < info.length; i++) {%>
-    <li class="habits">
-      <span>
-        <%= info[i].habit %>
-      </span>
-      <span>
-        <%= info[i].done %>
-      </span>
-      <span>
-        <button class="fa-thumbs-up">Done</button>
-      </span>
-      <span>
-        <button class="fa fa-trash" aria-hidden="true"></button>
-      </span>
+    <li class="habit">
+      <span class="habitText"><%= info[i].habit %></span>
+      <span class="blue"><%= info[i].done %></span>
+      <span><%= new Date(info[i].timeStamp).toLocaleDateString() %> at <%= new Date(info[i].timeStamp).toLocaleTimeString() %></span>
+      <span><button class="check">✔</button></span>
+      <span><button class="fa fa-trash" aria-hidden="true"x></button></span>
     </li>
   <% } %>
   </ul>
-
-  <h2>Add a personal habit!</h2>
-
-  <form action="/habit" method="POST">
-    <input type="text" placeholder="Habit" name="habit">
-    <button type="submit">Submit</button>
-  </form>
 
   <script src="main.js"></script>
 

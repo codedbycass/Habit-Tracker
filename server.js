@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
+const methodOverride = require('method-override')
+
 
 var db
 
@@ -22,11 +24,11 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
+app.use(methodOverride('_method')) // ability to submit forms as updates/puts
 
 //async GET func; get array of obj from db, then render ejs using data
 app.get('/', (req, res) => {
-  // console.log(`${req.url} hi my name is cass`) // checking if it works
-  db.collection('Habits').find().toArray()
+  db.collection('Habits').find().sort({timeStamp: - 1}).toArray()
   .then(data => {
     res.render('index.ejs', { info : data })
   })
@@ -44,16 +46,18 @@ app.post('/habit', (req, res) => {
   .catch(error => console.error(error))
 })
 
-//update operation
+//update operation for amount of times habit completed
 app.put('/habit', (req, res) => {
   db.collection('Habits')
   .findOneAndUpdate({habit: req.body.habit.trim()}, {
     $set: {
-      done: req.body.done +1
+      done: req.body.done +1,
+      timeStamp: new Date(),
+      // updatedDate: new Date()
     }
   }, {
     sort: {_id: -1},
-    upsert: true
+    upsert: true 
   }, (err, result) => {
     if (err) return res.send(err)
     res.send(result)

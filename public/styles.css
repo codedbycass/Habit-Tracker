@@ -1,7 +1,11 @@
 body{
   background: peachpuff;
   font-family: sans-serif;
-  margin: 3rem;
+  margin: 5rem 20rem;
+
+}
+html {
+  font-size: 62.5%;
 }
 h3{
   margin-top: 40px;
@@ -10,4 +14,29 @@ ul {
   list-style-type: none;
   padding: 1rem;
   margin: 2rem;
+}
+.habitText {
+  font-size: 4rem;
+  font-weight: bold;
+}
+h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+}
+h2, 
+p,
+.habit {
+  font-size: 2.5rem;
+}
+
+.fa-trash {
+  margin-bottom: 2rem;
+}
+.input {
+  text-align: center;
+}
+.blue {
+  color: blue;
+  border: 1px solid white;
+  border-radius: 5%;
 }
