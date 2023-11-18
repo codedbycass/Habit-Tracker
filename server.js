@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 //post operation; post route = form action
 app.post('/habit', (req, res) => {
   console.log(req)
-  db.collection('Habits').insertOne({habit: req.body.habit, done: 0})
+  db.collection('Habits').insertOne({habit: req.body.habit, done: 0, timeStamp: new Date()})
   .then(result => {
     console.log('Habit Added')
     res.redirect('/')
