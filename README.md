@@ -1,5 +1,7 @@
 # Habit Counter App
 
+![giphy (1)](https://github.com/codedbycass/Habit-Tracker/assets/122684139/4db0dde6-2d57-4dec-8fdc-5af75ce7d0e4)
+
 ## What
 
 This is a full-stack application designed to help users track their habits. Users can utilize pre-logged habits or customize their experience by entering their own habits in the input box. Upon completing a habit, they can click "Done" to keep track of how many times they've accomplished it.
